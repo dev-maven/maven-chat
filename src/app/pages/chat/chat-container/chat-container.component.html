@@ -1,2 +1,2 @@
 <app-chat-view [isLoading]="isLoading$ | async" [error]="error$ | async" [messages]="messages$ | async"
-  (outputText)="sendMessage($event)"></app-chat-view>
+  (outputText)="sendMessage($event)" (greeting)="sendGreeting()"></app-chat-view>

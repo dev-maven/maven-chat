@@ -28,15 +28,17 @@ export class ChatContainerComponent implements OnInit {
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
+    this.messages$ = this.store.pipe(select(getMessages));
+    this.isLoading$ = this.store.pipe(select(getIsLoading));
+    this.error$ = this.store.pipe(select(getError));
+  }
+
+  sendGreeting() {
     const messageObject: MessageSent = {
       id: this.userId,
       message: 'Hi',
     };
     this.store.dispatch(replyMessages({ data: messageObject }));
-
-    this.messages$ = this.store.pipe(select(getMessages));
-    this.isLoading$ = this.store.pipe(select(getIsLoading));
-    this.error$ = this.store.pipe(select(getError));
   }
 
   sendMessage(event: string) {

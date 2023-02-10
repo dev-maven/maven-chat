@@ -23,12 +23,17 @@ export class ChatViewComponent implements OnInit, AfterViewChecked {
   @Input() messages: Message[] = [];
   @Input() error: any;
   @Output() outputText: EventEmitter<string> = new EventEmitter();
+  @Output() greeting: EventEmitter<string> = new EventEmitter();
   @ViewChild('scrollContainer', { static: false })
   private scrollContainer: ElementRef;
   send = faPaperPlane;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.messages.length === 0) {
+      this.greeting.emit();
+    }
+  }
 
   sendMessage(text: string) {
     if (text) {
