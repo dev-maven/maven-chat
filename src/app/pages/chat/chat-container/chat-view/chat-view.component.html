@@ -1,0 +1,23 @@
+<!-- chat.component.html -->
+<div class="chat-container" #scrollContainer>
+  <div class="message-bubble-container">
+    <ng-container *ngFor="let message of messages">
+      <div class="message-bubble"
+        [ngClass]="{ 'received': message.type === 'received', 'sent': message.type === 'sent'}">
+        {{message.text}}
+      </div>
+    </ng-container>
+    <div class="message-bubble received" *ngIf="isLoading">
+      <app-message-loading></app-message-loading>
+    </div>
+  </div>
+
+
+</div>
+<div class="send-message-container">
+  <input type="text" class="message-input" #input (keyup.enter)="sendMessage(input.value); input.value = ''">
+  <button class="send-icon" (click)="sendMessage(input.value); input.value = ''">
+    <fa-icon [icon]="send"></fa-icon>
+  </button>
+</div>
+<p *ngIf="error" class="error">There was a problem fetching feedback, please try again</p>

@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <div class="pointer" routerLink="/">
+    <h1 class="logo-text">Maven <span>Chat</span></h1>
+  </div>
+  <ul class="nav-menu" [ngClass]="{'visible': showMenu}">
+    <li class="menu-item">
+      <span class="menu-link pointer" [routerLink]="['/']" routerLinkActive="router-link-active"
+        [routerLinkActiveOptions]="{exact: true}">Home</span>
+    </li>
+    <li class="menu-item">
+      <span class="menu-link pointer" [routerLink]="['chat']" routerLinkActive="router-link-active"
+        [routerLinkActiveOptions]="{exact: true}">Chat</span>
+    </li>
+  </ul>
+  <fa-icon [icon]="hamburger" class="fa-2x pointer menu-icon" fxHide.gt-xs (click)="showMenu = !showMenu"
+    *ngIf="!showMenu"></fa-icon>
+  <fa-icon [icon]="close" class="fa-2x pointer menu-icon" fxHide.gt-xs (click)="showMenu = !showMenu" *ngIf="showMenu">
+  </fa-icon>
+</nav>

@@ -1,0 +1,33 @@
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  .content {
+    display: block;
+    margin: auto;
+    text-align: center;
+
+    p {
+      font-size: 19px;
+    }
+
+    button {
+      width: 12rem;
+      padding: 20px;
+      background: #006466;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 20px;
+      margin: 10px 0;
+      &:disabled {
+        background: rgba(239, 239, 239, 0.3);
+        color: #ccc;
+        cursor: not-allowed;
+      }
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
+    }
+  }
+}
